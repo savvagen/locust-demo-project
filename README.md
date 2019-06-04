@@ -17,3 +17,17 @@ locust --host http://l5d.k8s.us-west-2.dev.earnin.com \   # Base URL
 ```
 
 
+### Run tests from slaves
+
+
+#### Init master
+``` 
+ locust -f clients/api/api_client.py --slave --master-host=localhost
+```
+#### Connect 2 slaves
+```
+locust -f clients/api/api_client.py --slave --master-host=localhost
+locust -f clients/api/api_client.py --slave --master-host=localhost
+
+```
+Then start testing

@@ -1,5 +1,4 @@
 
-
 class Post(object):
 
     def __init__(self, userId, id, title, body):
