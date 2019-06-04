@@ -1,4 +1,4 @@
-###Run Load tests on the developer cluster without web console
+### Run Load tests without web console
 ```
 locust --host http://l5d.k8s.us-west-2.dev.earnin.com -f locust_file.py WebsiteUser --no-web -c 5 -r 3 --run-time 30
 
