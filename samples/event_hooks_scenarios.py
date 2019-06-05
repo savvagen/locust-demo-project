@@ -1,6 +1,8 @@
 import sys
 import os
 
+import locust
+
 PACKAGE_PARENT = '..'
 SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
 sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
@@ -9,6 +11,7 @@ sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, "../..")))
 import json
 import random
 from locust import Locust, HttpLocust, TaskSet, task, events, web
+from locust.events import EventHook
 from faker import Faker
 from clients.services.posts_service import *
 from models.post import Post
@@ -63,8 +66,36 @@ class WebUser(HttpLocust):
     max_wait = 500
 
 
+    request_success_stats = [list()]
+    request_fail_stats = [list()]
+
+    def __init__(self):
+        locust.events.request_success += self.hook_request_success
+        locust.events.request_failure += self.hook_request_fail
+        locust.events.quitting += self.hook_locust_quit
+
+    def hook_request_success(self, request_type, name, response_time, response_length):
+        self.request_success_stats.append([name, request_type, response_time])
+
+    def hook_request_fail(self, request_type, name, response_time, exception):
+        self.request_fail_stats.append([name, request_type, response_time, exception])
+
+    def hook_locust_quit(self):
+        self.save_success_stats()
+
+    def save_success_stats(self):
+        import csv
+        with open('success_req_stats.csv', 'wb') as csv_file:
+            writer = csv.writer(csv_file)
+            for value in self.request_success_stats:
+                writer.writerow(value)
 
 
+
+
+"""
+Adding Web Resource with content-length statistics.
+"""
 
 """
 We need somewhere to store the stats.
