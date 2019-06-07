@@ -41,7 +41,6 @@ class ReadPosts(TaskSet):
         self.interrupt()
 
 
-
 class EditPosts(TaskSet):
 
     @task(1)
@@ -58,7 +57,6 @@ class EditPosts(TaskSet):
     @task(5)
     def stop(self):
         self.interrupt()
-
 
 
 class MainUserBehavior(TaskSet):

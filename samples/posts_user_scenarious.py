@@ -20,7 +20,6 @@ fake = Faker()
 
 
 
-
 class PostsWatcherBehavior(TaskSet):
 
     tasks = {get_posts: 1, get_post: 2}
@@ -28,6 +27,8 @@ class PostsWatcherBehavior(TaskSet):
     @task(3)
     def get_posts_comments(self):
         get_post_comments(self, 1)
+
+
 
 
 class PostsEditorBehavior(TaskSet):

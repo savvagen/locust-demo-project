@@ -40,7 +40,12 @@ def delete_resource(l, id):
     l.client.delete("/posts/{}".format(id))
 
 
+
+
+
+
 class UserPostsBehavior(TaskSet):
+
     tasks = {get_posts: 3, update_post: 2}
 
     @task(2)
