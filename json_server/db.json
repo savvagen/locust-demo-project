@@ -1,0 +1,46 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "body": "Hello World",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "performance-testing",
+      "body": "Hello World",
+      "author": "tester"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "author": "typicode",
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "author": "tester",
+      "body": "my comment",
+      "postId": 1
+    },
+      {
+      "id": 3,
+      "author": "tester",
+      "body": "post2 comment",
+      "postId": 2
+    }
+  ],
+  "profile": [
+    {
+      "id": 1,
+      "name": "typicode"
+    },
+    {
+      "id": 2,
+      "name": "tester"
+    }
+  ]
+}
