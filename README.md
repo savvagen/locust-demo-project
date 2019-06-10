@@ -1,9 +1,9 @@
 ### Run Load tests without web console
 ```
-locust --host http://l5d.k8s.us-west-2.dev.earnin.com -f locust_file.py WebsiteUser --no-web -c 5 -r 3 --run-time 30
+locust --host https://jsonplaceholder.typicode.com -f locust_file.py WebsiteUser --no-web -c 5 -r 3 --run-time 30
 
 
-locust --host http://l5d.k8s.us-west-2.dev.earnin.com \   # Base URL
+locust --host https://jsonplaceholder.typicode.com \      # Base URL
        -f locust_file.py WebsiteUser \                    # file with tasks and Test instance
        --no-web \                                         # without web console
        --csv=report                                       # will generate a report in csv format
