@@ -1,13 +1,21 @@
 
 
+
+def trace(func):
+    def request_wrapper(*args, **kwargs):
+        resp = func()
+        print("Request: {} | Status Code: {} | Response Body: {}".format(resp.url, resp.status_code, resp.text))
+        return resp
+    return request_wrapper
+
+@trace
 def get_posts(l):
     resp = l.client.get("/posts")
-    print("Request: {} | Status Code: {} | Response Body: {}".format(resp.url, resp.status_code, resp.text))
     return resp
 
+@trace
 def get_post(l, id=1):
     resp = l.client.get("/posts/{}".format(id))
-    print("Request: {} | Status Code: {} | Response Body: {}".format(resp.url, resp.status_code, resp.text))
     return resp
 
 def create_post(l, payload):

@@ -31,12 +31,11 @@ class PostsUserBehavior(TaskSequence):
         self.client.post("/posts", json.dumps(Post(userId=1, id=1, title=fake.sentence(nb_words=5), body=fake.text())))
 
     @seq_task(1)
-    @task(2)
     def get_all_posts(self):
         get_posts(self)
 
     @seq_task(2)
-    @task(1)
+    @task(2)
     def open_post(self):
         get_post(self, 1)
 
@@ -71,6 +70,7 @@ class PostsUserBehavior(TaskSequence):
 
 
 class PostsLocustTests(HttpLocust):
+
     host = base_uri
     weight = 1
     stop_timeout = 30
