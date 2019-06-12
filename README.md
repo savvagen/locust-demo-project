@@ -1,4 +1,6 @@
-### Locust Demo Project
+### Locust Demo Project - Part 1
+![](https://cdn2.hubspot.net/hubfs/208250/Blog_Images/locustjava1.png)
+##### To see the Locust demo with Docker and Kubernetes see [Part 2](https://github.com/savvagen/locust-poc) 
 
 ## Writing tasks
 1. Write your custom tasks using `TaskSet` class:
@@ -89,3 +91,4 @@ locust -f clients/api/api_client.py --slave --master-host=localhost
 locust -f clients/api/api_client.py --slave --master-host=localhost
 
 ```
+
